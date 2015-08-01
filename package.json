@@ -1,6 +1,6 @@
 {
   "name": "generator-graphite",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Yeoman generator for io.js graphql apps",
   "license": "MIT",
   "main": "app/index.js",
