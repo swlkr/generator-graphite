@@ -1,6 +1,6 @@
 # Graphite
 
-Graphite is a [yeoman](http://yeoman.io) generator for node.js graphql apps.
+Graphite is a [yeoman](http://yeoman.io) generator for io.js graphql apps.
 
 ### How's it look?
 
