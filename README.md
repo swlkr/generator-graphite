@@ -1,6 +1,6 @@
 # Graphite
 
-Graphite is a [yeoman](http://yeoman.io) generator for io.js graphql apps.
+Graphite is a [yeoman](http://yeoman.io) generator for node.js graphql apps.
 
 ### How's it look?
 
@@ -27,6 +27,6 @@ $ npm install -g yo generator-graphite
 $ yo graphite
 $ ...Answer some questions
 $ cd <your project name>
-$ npm run dev
+$ npm run dev # requires node v4 or higher
 $ curl -H "Content-Type: application/json" -d '{ "query": "{ hello }" }' localhost:3000/query
 ```
