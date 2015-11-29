@@ -16,18 +16,16 @@
   },
   "dependencies": {
     "dotenv": "^1.2.0",
-    "graphql": "^0.1.12",
+    "graphql": "^0.4.13",
     "jsonwebtoken": "^5.0.4",
-    "koa": "^0.18.0",
-    "koa-bodyparser": "^1.4.0",
-    "koa-jwt": "^1.1.1",
-    "koa-logger": "^1.2.2",
-    "koa-override-method": "^1.0.0",
-    "koa-route": "^2.4.0"
+    "koa": "^2.0.0-alpha.3",
+    "koa-bodyparser": "^3.0.0",
+    "koa-logger": "^2.0.0",
+    "koa-route": "^3.0.0"
   },
   "devDependencies": {
-    "babel-eslint": "^3.1.23",
-    "eslint": "^0.24.0",
+    "babel-eslint": "^5.0.0-beta1",
+    "eslint": "^1.10.1",
     "nodemon": "^1.4.0"
   }
 }

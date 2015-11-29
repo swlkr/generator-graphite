@@ -1,35 +1,46 @@
 var config         = require("./config"),
-    app            = require("koa")(),
+    koa            = require("koa"),
+    app            = new koa(),
     bodyParser     = require("koa-bodyparser"),
-    overrideMethod = require("koa-override-method"),
     logger         = require("koa-logger"),
-    jwt            = require("koa-jwt"),
+    jwt            = require("jsonwebtoken"),
     route          = require("koa-route"),
     routes         = require("./routes")(app, route);
 
 app.use(logger());
 app.use(bodyParser());
-app.use(function *(next) {
-  this.request.method = overrideMethod.call(this, this.request.body);
-  yield next;
-});
 
 // Error handling
-app.use(function *(next) {
-  try {
-    yield next;
-  } catch(error) {
-    console.log(error);
-    this.status = error.status || 500;
-    this.body = { message: error.message };
-  }
+app.use((ctx, next) => {
+  return next()
+         .catch((error) => {
+           console.log(error);
+           ctx.status = error.status || 500;
+           ctx.body = { message: error.message };
+         });
 });
 
 // Routes without authentication
 routes.open().map(routes.setup);
 
 // Eveything below this requires authentication
-app.use(jwt({ secret: config.app.secret }));
+app.use((ctx, next) => {
+  return next()
+         .then(() => {
+           return new Promise((resolve, reject) => {
+             jwt.verify(ctx.header['Authorization'], config.app.secret, (err, decoded) => {
+               if(err) {
+                 return reject(err);
+               }
+
+               return resolve(decoded);
+             });
+           });
+         })
+         .then((decoded) => {
+           ctx.jwt = decoded;
+         });
+});
 
 // Routes with authentication
 routes.auth().map(routes.setup);

@@ -44,12 +44,12 @@ module.exports = yeoman.generators.Base.extend({
       var dir = path.join(process.cwd(), this.props.name);
       process.chdir(dir);
 
-      mkdirp('controllers');
+      mkdirp('routes');
       mkdirp('schema');
 
       this.fs.copy(
-        this.templatePath('_graphql-controller.js'),
-        this.destinationPath('controllers/graphql-controller.js')
+        this.templatePath('_graphql.js'),
+        this.destinationPath('routes/graphql.js')
       );
 
       this.fs.copyTpl(

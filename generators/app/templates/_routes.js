@@ -1,9 +1,9 @@
 var fs    = require("fs"),
-    files = fs.readdirSync("./controllers");
+    files = fs.readdirSync("./routes");
 
 function getRoutes() {
   var arrays = files.map(function(f) {
-    return require("./controllers/" + f).routes();
+    return require("./routes/" + f).routes();
   });
 
   return [].concat.apply([], arrays);
